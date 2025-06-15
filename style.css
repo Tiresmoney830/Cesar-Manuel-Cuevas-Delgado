@@ -1,0 +1,205 @@
+/* =================================================================== */
+/* ===================== VARIABLES DE LOS TEMAS ====================== */
+/* =================================================================== */
+
+:root {
+    /* Variables comunes para ambos temas */
+    --primary-color: #ff0000;
+    --transition-speed: 0.3s;
+}
+
+/* =================================================================== */
+/* =================== ESTILOS DIRECTOS POR TEMA ===================== */
+/* =================================================================== */
+
+/* ------------------- TEMA OSCURO ------------------- */
+body[data-theme='dark'] {
+    background-color: #121212;
+    color: #ffffff;
+}
+body[data-theme='dark'] .navbar {
+    background-color: rgba(20, 20, 20, 0.85);
+    /* El borde se aplicará con la clase .scrolled */
+}
+body[data-theme='dark'] .navbar-brand,
+body[data-theme='dark'] .nav-link,
+body[data-theme='dark'] .theme-btn {
+    color: #ffffff;
+}
+body[data-theme='dark'] .nav-link:hover {
+    color: var(--primary-color);
+}
+body[data-theme='dark'] .card {
+    background-color: #1e1e1e;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+}
+/* CORRECCIÓN DE CONTRASTE: Todo el texto en las cards es blanco */
+body[data-theme='dark'] .card .card-title,
+body[data-theme='dark'] .card .card-text,
+body[data-theme='dark'] .card .card-subtitle,
+body[data-theme='dark'] .card .text-muted {
+    color: #ffffff !important;
+}
+body[data-theme='dark'] .form-control {
+    background-color: #2a2a2a;
+    border-color: #444;
+    color: #ffffff;
+}
+body[data-theme='dark'] .form-control:focus {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+}
+body[data-theme='dark'] footer {
+    background-color: #1a1a1a;
+    border-top: 1px solid var(--primary-color);
+}
+body[data-theme='dark'] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ------------------- TEMA CLARO ------------------- */
+body[data-theme='light'] {
+    background-color: #f9f9f9;
+    color: #000000;
+}
+body[data-theme='light'] .navbar {
+    background-color: rgba(249, 249, 249, 0.9);
+    /* El borde se aplicará con la clase .scrolled */
+}
+body[data-theme='light'] .navbar-brand,
+body[data-theme='light'] .nav-link,
+body[data-theme='light'] .theme-btn {
+    color: #000000;
+}
+body[data-theme='light'] .nav-link:hover {
+    color: var(--primary-color);
+}
+body[data-theme='light'] .card {
+    background-color: #ffffff;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+}
+body[data-theme='light'] .card .text-muted {
+    color: #6c757d !important;
+}
+body[data-theme='light'] .form-control {
+    background-color: #ffffff;
+    border-color: #ccc;
+    color: #000000;
+}
+body[data-theme='light'] .form-control:focus {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+body[data-theme='light'] footer {
+    background-color: #f1f1f1;
+    border-top: 1px solid var(--primary-color);
+}
+body[data-theme='light'] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ================================================== */
+/* ========= ESTILOS GENERALES Y ANIMACIONES ======== */
+/* ================================================== */
+
+/* ================================================== */
+/* =============== NAVBAR AL HACER SCROLL =========== */
+/* ================================================== */
+/*
+   (NUEVO)
+   Por defecto, la navbar no tiene borde inferior.
+   Solo cuando se añade la clase '.scrolled' (mediante JS), aplicamos un borde y una sombra.
+*/
+.navbar.scrolled {
+    border-bottom: 1px solid var(--primary-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* La transición se añade más abajo de forma global */
+}
+/* Para el tema oscuro, la sombra es diferente */
+body[data-theme='dark'] .navbar.scrolled {
+    box-shadow: 0 2px 10px rgba(255, 0, 0, 0.1);
+}
+/* ================================================== */
+
+/* Aplicamos la transición a todos los elementos que cambian */
+body, .navbar, .card, .form-control, footer {
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    /* El box-shadow se controla en las reglas de tema */
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+.bio {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+.animated-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+.row > div:nth-child(1) .animated-card { animation-delay: 0.1s; }
+.row > div:nth-child(2) .animated-card { animation-delay: 0.2s; }
+.row > div:nth-child(3) .animated-card { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.tech-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 4rem;
+}
+.tech-icons i {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.tech-icons i:hover {
+    transform: scale(1.2);
+    color: var(--primary-color);
+}
+.btn-primary-custom {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 25px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.btn-primary-custom:hover {
+    background-color: #d60000;
+    border-color: #d60000;
+    color: #fff;
+    transform: translateY(-2px);
+}
+.social-icons a {
+    font-size: 1.5rem;
+    margin: 0 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-icons a:hover {
+    color: var(--primary-color);
+    transform: translateY(-5px);
+}
+.navbar-toggler {
+    border-color: var(--primary-color);
+}
