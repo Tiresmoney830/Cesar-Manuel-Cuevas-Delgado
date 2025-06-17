@@ -6,35 +6,47 @@
     /* Variables comunes para ambos temas */
     --primary-color: #ff0000;
     --transition-speed: 0.3s;
+
+    --border-radius-small: 8px;
+    --border-radius-medium: 12px;
+    --border-radius-large: 16px;
+    --border-radius-xlarge: 28px;
+    --border-radius-full: 999px; 
 }
 
 /* =================================================================== */
 /* =================== ESTILOS DIRECTOS POR TEMA ===================== */
 /* =================================================================== */
 
-/* ------------------- TEMA OSCURO ------------------- */
+/* ------------------- TEMA OSCURO (CON GRADIENTE) ------------------- */
 body[data-theme='dark'] {
-    background-color: #121212;
+    background-image: linear-gradient(180deg, #1f1f29 0%, #121212 100%);
+    background-color: #121212; 
+    background-attachment: fixed; 
     color: #ffffff;
 }
 body[data-theme='dark'] .navbar {
-    background-color: rgba(20, 20, 20, 0.85);
-    /* El borde se aplicará con la clase .scrolled */
+    background-color: rgba(28, 28, 38, 0.85); 
 }
 body[data-theme='dark'] .navbar-brand,
 body[data-theme='dark'] .nav-link,
 body[data-theme='dark'] .theme-btn {
     color: #ffffff;
 }
-body[data-theme='dark'] .nav-link:hover {
+body[data-theme='dark'] .nav-link:hover,
+body[data-theme='dark'] .nav-link.active {
     color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-radius: var(--border-radius-full);
+    padding-left: 12px; 
+    padding-right: 12px;
 }
 body[data-theme='dark'] .card {
-    background-color: #1e1e1e;
+    background-image: linear-gradient(160deg, #2a2a35 0%, #1e1e1e 100%);
+    background-color: #1e1e1e; 
     border: 1px solid var(--primary-color);
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
 }
-/* CORRECCIÓN DE CONTRASTE: Todo el texto en las cards es blanco */
 body[data-theme='dark'] .card .card-title,
 body[data-theme='dark'] .card .card-text,
 body[data-theme='dark'] .card .card-subtitle,
@@ -42,7 +54,7 @@ body[data-theme='dark'] .card .text-muted {
     color: #ffffff !important;
 }
 body[data-theme='dark'] .form-control {
-    background-color: #2a2a2a;
+    background-color: #2a2a2a; 
     border-color: #444;
     color: #ffffff;
 }
@@ -50,48 +62,59 @@ body[data-theme='dark'] .form-control:focus {
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
 }
 body[data-theme='dark'] footer {
-    background-color: #1a1a1a;
+    background-color: #1a1a20; 
     border-top: 1px solid var(--primary-color);
 }
 body[data-theme='dark'] .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* ------------------- TEMA CLARO ------------------- */
+/* ------------------- TEMA CLARO (CON GRADIENTE RADIAL) ------------------- */
 body[data-theme='light'] {
-    background-color: #f9f9f9;
-    color: #000000;
+    /* (NUEVO) Gradiente radial para el tema claro */
+    background: #EEAECA; /* Fallback color */
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background-attachment: fixed; /* Importante para gradientes de página completa */
+    color: #000000; /* Texto negro para contraste */
 }
 body[data-theme='light'] .navbar {
-    background-color: rgba(249, 249, 249, 0.9);
-    /* El borde se aplicará con la clase .scrolled */
+    /* (MODIFICADO) Fondo del navbar más translúcido para ver el gradiente */
+    background-color: rgba(255, 255, 255, 0.6); /* Blanco translúcido */
+    backdrop-filter: blur(8px); /* Efecto de desenfoque para mejorar legibilidad */
 }
 body[data-theme='light'] .navbar-brand,
 body[data-theme='light'] .nav-link,
 body[data-theme='light'] .theme-btn {
-    color: #000000;
+    color: #000000; /* Mantener texto negro para contraste con el navbar claro */
 }
-body[data-theme='light'] .nav-link:hover {
+body[data-theme='light'] .nav-link:hover,
+body[data-theme='light'] .nav-link.active { 
     color: var(--primary-color);
+    background-color: rgba(0, 0, 0, 0.08); /* Fondo sutil para hover */
+    border-radius: var(--border-radius-full);
+    padding-left: 12px; 
+    padding-right: 12px;
 }
 body[data-theme='light'] .card {
-    background-color: #ffffff;
+    /* (MODIFICADO) Fondo de las tarjetas translúcido */
+    background-color: rgba(255, 255, 255, 0.75); /* Blanco translúcido */
     border: 1px solid var(--primary-color);
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra más suave */
 }
 body[data-theme='light'] .card .text-muted {
-    color: #6c757d !important;
+    color: #333 !important; /* Un gris más oscuro para mejor contraste */
 }
 body[data-theme='light'] .form-control {
-    background-color: #ffffff;
-    border-color: #ccc;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: #bbb;
     color: #000000;
 }
 body[data-theme='light'] .form-control:focus {
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
 }
 body[data-theme='light'] footer {
-    background-color: #f1f1f1;
+    /* (MODIFICADO) Fondo del footer translúcido */
+    background-color: rgba(240, 240, 240, 0.7);
     border-top: 1px solid var(--primary-color);
 }
 body[data-theme='light'] .navbar-toggler-icon {
@@ -105,25 +128,21 @@ body[data-theme='light'] .navbar-toggler-icon {
 /* ================================================== */
 /* =============== NAVBAR AL HACER SCROLL =========== */
 /* ================================================== */
-/*
-   (NUEVO)
-   Por defecto, la navbar no tiene borde inferior.
-   Solo cuando se añade la clase '.scrolled' (mediante JS), aplicamos un borde y una sombra.
-*/
 .navbar.scrolled {
     border-bottom: 1px solid var(--primary-color);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    /* La transición se añade más abajo de forma global */
 }
-/* Para el tema oscuro, la sombra es diferente */
 body[data-theme='dark'] .navbar.scrolled {
+    background-color: rgba(20, 20, 28, 0.95); 
     box-shadow: 0 2px 10px rgba(255, 0, 0, 0.1);
+}
+body[data-theme='light'] .navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.8); /* Más opaco al hacer scroll */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 /* ================================================== */
 
-/* Aplicamos la transición a todos los elementos que cambian */
-body, .navbar, .card, .form-control, footer {
-    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+body, .navbar, .nav-link, .card, .form-control, footer {
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-image var(--transition-speed) ease, background var(--transition-speed) ease;
 }
 
 .section-title {
@@ -137,8 +156,8 @@ body, .navbar, .card, .form-control, footer {
     height: 150px;
     border-radius: 50%;
     border: 3px solid var(--primary-color);
-    /* El box-shadow se controla en las reglas de tema */
     animation: heartbeat 1.5s ease-in-out infinite;
+    object-fit: cover;
 }
 @keyframes heartbeat {
     0%, 100% { transform: scale(1); }
