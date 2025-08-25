@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <link rel="stylesheet" href="style.css">
 
+    <!-- === ESTILO PARA IGUALAR ALTURA DE IMÁGENES === -->
+    <style>
+        #proyectos .card-img-top,
+        #videos .card-img-top {
+            height: 200px; 
+            object-fit: cover; 
+            width: 100%;
+        }
+    </style>
+    <!-- =============================================== -->
+
     <script>
         (function() {
             const observer = new MutationObserver((mutations, obs) => {
@@ -70,120 +81,132 @@
             </div>
         </section>
 
+        <!-- ======================= SECCIÓN DE PROYECTOS CON CARRUSEL ======================= -->
         <section id="proyectos" class="py-5">
             <h2 class="section-title text-center mb-5">Proyectos</h2>
-            <div class="row g-4">
-                
-                <div class="col-md-4">
-                    <div class="card animated-card">
-                        <img src="img/imagen-proyecto-portafolio.jpg" class="card-img-top" alt="Ilustración de un portafolio profesional">
-                        <div class="card-body text-center">
-                            <p class="card-text">Mi portafolio web personal donde muestro mis habilidades y proyectos.</p>
-                            <a href="https://github.com/Tiresmoney830/Cesar-Manuel-Cuevas-Delgado" target="_blank" rel="noopener noreferrer" class="btn btn-primary-custom">Ver Proyecto</a>
+            <div id="carouselProyectos" class="carousel slide">
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card animated-card">
+                                    <img src="img/imagen-proyecto-portafolio.jpg" class="card-img-top" alt="Ilustración de un portafolio profesional">
+                                    <div class="card-body text-center"><p class="card-text">Mi portafolio web personal donde muestro mis habilidades y proyectos.</p><a href="https://github.com/Tiresmoney830/Cesar-Manuel-Cuevas-Delgado" target="_blank" rel="noopener noreferrer" class="btn btn-primary-custom">Ver Proyecto</a></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 d-none d-md-block">
+                                <div class="card animated-card">
+                                    <img src="img/imagen-proyecto-java-tipos.png" class="card-img-top" alt="Ilustración de tipos de datos en Java/Xamarin">
+                                    <div class="card-body text-center"><p class="card-text">Un analizador de datos desarrollado con Xamarin. Código disponible en GitHub.</p><a href="https://github.com/Tiresmoney830/Analizador-de-datos-en-Xamarin" target="_blank" rel="noopener noreferrer" class="btn btn-primary-custom">Ver Código en GitHub</a></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 d-none d-lg-block">
+                                <div class="card animated-card">
+                                    <img src="img/imagen-de-veterinaria.jpg" class="card-img-top" alt="Imagen del Proyecto de la veterinaria">
+                                    <div class="card-body text-center"><p class="card-text">Pagina para una veterinaria.</p><a href="https://segundo-proyecto-bay.vercel.app/" class="btn btn-primary-custom" target="_blank" rel="noopener noreferrer">Ver Pagina</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card animated-card">
+                                    <img src="https://fuelcarmagazine.com/wp-content/uploads/2023/01/20230113_01_01.jpg" class="card-img-top" alt="Proyecto de Lógica Web">
+                                    <div class="card-body text-center"><p class="card-text">Proyecto que demuestra principios de lógica con un estilo automotriz.</p><a href="https://web-logica-lac.vercel.app/" class="btn btn-primary-custom" target="_blank" rel="noopener noreferrer">Ver Proyecto</a></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 d-none d-md-block">
+                                <div class="card animated-card">
+                                    <img src="img/streets.jpg" class="card-img-top" alt="Proyecto de Juego de Cartas">
+                                    <div class="card-body text-center"><p class="card-text">Un juego de cartas interactivo con tematica de Street Fighter 3 Third Strike.</p><a href="https://juego-de-cartas-delta.vercel.app/" class="btn btn-primary-custom" target="_blank" rel="noopener noreferrer">Ver Proyecto</a></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 d-none d-lg-block">
+                                <div class="card animated-card">
+                                    <img src="img/comics.webp" class="card-img-top" alt="Proyecto de Tienda Simulada">
+                                    <div class="card-body text-center"><p class="card-text">Simulación de una tienda en linea de Comics.</p><a href="https://tienda-simulada.vercel.app/" class="btn btn-primary-custom" target="_blank" rel="noopener noreferrer">Ver Proyecto</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                             <div class="col-lg-4 col-md-6">
+                                <div class="card animated-card">
+                                    <img src="https://www.revistaeyn.com/binrepository/1200x746/0c0/0d0/none/26086/IXDS/geminiiagoogle_6684589_20240208154244.jpg" class="card-img-top" alt="Sexto Proyecto Web">
+                                    <div class="card-body text-center"><p class="card-text">Proyecto web usando la api de Gemini.</p><a href="https://sexto-proyecto-omega.vercel.app/" class="btn btn-primary-custom" target="_blank" rel="noopener noreferrer">Ver Proyecto</a></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-md-4">
-                    <div class="card animated-card">
-                        <img src="img/imagen-proyecto-java-tipos.png" class="card-img-top" alt="Ilustración de tipos de datos en Java/Xamarin">
-                        <div class="card-body text-center">
-                            <p class="card-text">Un analizador de datos desarrollado con Xamarin. Código disponible en GitHub.</p>
-                            <a href="https://github.com/Tiresmoney830/Analizador-de-datos-en-Xamarin" target="_blank" rel="noopener noreferrer" class="btn btn-primary-custom">Ver Código en GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card animated-card">
-                        <img src="img/imagen-de-veterinaria.jpg" class="card-img-top" alt="Imagen del Proyecto de la veterinaria">
-                        <div class="card-body text-center">
-                            <p class="card-text">Pagina para una veterinaria.</p>
-                            
-                            <a href="https://segundo-proyecto-bay.vercel.app/" class="btn btn-primary-custom" target="_blank" rel="noopener noreferrer">Ver Pagina</a>
-                        </div>
-                    </div>
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProyectos" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselProyectos" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span>
+                </button>
             </div>
         </section>
-
-        <!-- ======================= SECCIÓN DE VIDEOS ACTUALIZADA CON 5 ESPACIOS ======================= -->
+        
+        <!-- ======================= SECCIÓN DE VIDEOS CON CARRUSEL ======================= -->
         <section id="videos" class="py-5">
             <h2 class="section-title text-center mb-5">Videos</h2>
-            <div class="row g-4">
-                
-                <!-- VIDEO 1 -->
-                <div class="col-md-4">
-                    <div class="card animated-card">
-                        <div class="ratio ratio-16x9">
-                            <iframe src="https://www.youtube.com/embed/vK0iG8pT-Pk?si=ZCGyDoX9QrZ6HM5_" title="Video de YouTube 1" allowfullscreen></iframe>
+            <div id="carouselVideos" class="carousel slide">
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-lg-4 col-md-6"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/vK0iG8pT-Pk?si=ZCGyDoX9QrZ6HM5_" title="Video de YouTube 1" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Analizador de Tipos de Datos</h5><p class="card-text">Video explicando un programa hecho en Xamarin para identificar qué tipo de dato ha sido ingresado por el usuario.</p></div></div></div>
+                            <div class="col-lg-4 col-md-6 d-none d-md-block"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/zq4WuViyWwM?si=ltgS9Wg5eVyBWlMC" title="Video de YouTube 2" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Excepciones en C# con Xamarin</h5><p class="card-text">Demostración de cómo manejar excepciones (try-catch) en una aplicación móvil desarrollada con Xamarin.</p></div></div></div>
+                            <div class="col-lg-4 col-md-6 d-none d-lg-block"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wipgDKKpYSU?si=lLb68V-OzuoeLkot" title="Video de YouTube 3" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Presentacion Personal acerca de mi</h5><p class="card-text">Es una app en xamarin forms donde hice una pequeña presentacion acerca de mi.</p></div></div></div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Analizador de Tipos de Datos</h5>
-                            <p class="card-text">Video explicando un programa hecho en Xamarin para identificar qué tipo de dato ha sido ingresado por el usuario.</p>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-lg-4 col-md-6"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/GZC2nv47Fnc?si=DHo_2EXZSe-1sf24" title="Video de YouTube 4" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Mis videojuegos favoritos</h5><p class="card-text">Es una app en xamarin forms que presento mis juegos favoritos con un link cada uno para poder saber mas del juego.</p></div></div></div>
+                            <div class="col-lg-4 col-md-6 d-none d-md-block"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/t6RVEwHvBog?si=lFXQTXsWiAWXOFv7" title="Video de YouTube 5" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Login Validado en Xamarin</h5><p class="card-text">Una app para logearse hecha en xamarin forms donde puedes ir a la pagina de la Universidad OYM.</p></div></div></div>
+                            <div class="col-lg-4 col-md-6 d-none d-lg-block"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/tHAbv2PG1wY?si=_2YQ-brqXgqvyk8f" title="Video de YouTube 6" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Galeria de Imagenes en Xamarin Forms</h5><p class="card-text">Explicación de una galeria de imagenes utilizando el CARRUSELVIEW en Xamarin Forms.</p></div></div></div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-lg-4 col-md-6"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/Wn6_8wNmJ4I?si=R6ZUJ9RukCk1ymQL" title="Video de YouTube 7" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Galeria de Imagenes con informacion</h5><p class="card-text">Explicación del uso del CONTROL FLEXLAYOUT, STACKLAYOUT etc para una aplicacion en Xamarin Forms.</p></div></div></div>
+                            <div class="col-lg-4 col-md-6 d-none d-md-block"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/U3Rmi2rR_ew?si=qPSGMzDaMUlrmTe0" title="Video de YouTube 8" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Mayor de 3 Valores</h5><p class="card-text">Explicación de una aplicacion que calcula cual numero es mayor de forma ordenada o no ordenada.</p></div></div></div>
+                            <div class="col-lg-4 col-md-6 d-none d-lg-block"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/bcj5HnDIfy4?si=O5iDOxrt_C9F-zcg" title="Video de YouTube 9" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Uso de un archivo Json</h5><p class="card-text">Explicación del uso de una aplicacion de JSON para busqueda de protocolos o codigos.</p></div></div></div>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-lg-4 col-md-6"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/SM_Zf3b8Qss?si=-Z85eIikKeY0_qej" title="Video de YouTube 10" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Aplicacion de GPS</h5><p class="card-text">Explicación de una aplicacion sencilla de GPS en Xamarin Forms.</p></div></div></div>
+                            <div class="col-lg-4 col-md-6 d-none d-md-block"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/XQVUeEDWa_4?si=9uS6cTQOdNeqe5qX" title="Video de YouTube 11" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Uso del grid en Xamrin Forms</h5><p class="card-text">Explicación de una calculadora basica usando el Grid.</p></div></div></div>
+                            <div class="col-lg-4 col-md-6 d-none d-lg-block"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/nki9mgbLHJ8?si=2xmxcb-D-M3zjtYC" title="Video de YouTube 12" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Calculadora de IMC</h5><p class="card-text">Explicación de una Calculadora de IMC que te dice que tan bien o mal esta tu masa corporar.</p></div></div></div>
+                        </div>
+                    </div>
+                     <!-- Slide 5 -->
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-lg-4 col-md-6"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/93rrqUYEWFY?si=2g4PgdRcg9auADGs" title="Video de YouTube 13" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Sistema de Calificacion</h5><p class="card-text">Explicación de un sistema de calificacion de la universidad y te dice si pasaste o no.</p></div></div></div>
+                            <div class="col-lg-4 col-md-6 d-none d-md-block"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/LDdhR2-AXrU?si=PBNNVBoNXOKwFGtY" title="Video de YouTube 14" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Consumo de Api en Xamarin</h5><p class="card-text">Explicacion corta acerca del consumo de api en xamarin poniendo de ejemplo un json sencillo.</p></div></div></div>
+                            <div class="col-lg-4 col-md-6 d-none d-lg-block"><div class="card animated-card"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/nVQUZlZpCuE?si=-6li7iGffphigNuy" title="Video de YouTube 15" allowfullscreen></iframe></div><div class="card-body"><h5 class="card-title">Alicacion de Clima</h5><p class="card-text">Explicación de una aplicacion que revisa el clima en cada ciudad usando una key de OpenWeatherMap.</p></div></div></div>
                         </div>
                     </div>
                 </div>
-
-                <!-- VIDEO 2 -->
-                <div class="col-md-4">
-                    <div class="card animated-card">
-                        <div class="ratio ratio-16x9">
-                            <iframe src="https://www.youtube.com/embed/zq4WuViyWwM?si=ltgS9Wg5eVyBWlMC" title="Video de YouTube 2" allowfullscreen></iframe>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Excepciones en C# con Xamarin</h5>
-                            <p class="card-text">Demostración de cómo manejar excepciones (try-catch) en una aplicación móvil desarrollada con Xamarin.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- VIDEO 3 -->
-                <div class="col-md-4">
-                    <div class="card animated-card">
-                        <div class="ratio ratio-16x9">
-                            <iframe src="https://www.youtube.com/embed/wipgDKKpYSU?si=lLb68V-OzuoeLkot" title="Video de YouTube 3" allowfullscreen></iframe>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Presentacion Personal acerca de mi</h5>
-                            <p class="card-text">Es una app en xamarin forms donde hice una pequeña presentacion acerca de mi.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- ================= NUEVOS VIDEOS AÑADIDOS ================= -->
-
-                <!-- VIDEO 4 (NUEVO) -->
-                <div class="col-md-4">
-                    <div class="card animated-card">
-                        <div class="ratio ratio-16x9">
-                            <!-- Pega aquí el link "embed" de tu cuarto video -->
-                            <iframe src="https://www.youtube.com/embed/GZC2nv47Fnc?si=DHo_2EXZSe-1sf24" title="Video de YouTube 4" allowfullscreen></iframe>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Mis videojuegos favoritos</h5>
-                            <p class="card-text">Es una app en xamarin forms que presento mis juegos favoritos con un link cada uno para poder saber mas del juego.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- VIDEO 5 (NUEVO) -->
-                <div class="col-md-4">
-                    <div class="card animated-card">
-                        <div class="ratio ratio-16x9">
-                            <!-- Pega aquí el link "embed" de tu quinto video -->
-                            <iframe src="https://www.youtube.com/embed/t6RVEwHvBog?si=lFXQTXsWiAWXOFv7" title="Video de YouTube 5" allowfullscreen></iframe>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Login Validado en Xamarin</h5>
-                            <p class="card-text">Una app para logearse hecha en xamarin forms donde puedes ir a la pagina de la Universidad OYM.</p>
-                        </div>
-                    </div>
-                </div>
-
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselVideos" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselVideos" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span>
+                </button>
             </div>
         </section>
-        <!-- ===================== FIN DE LA SECCIÓN DE VIDEOS ======================= -->
 
         <section id="contacto" class="py-5">
             <h2 class="section-title text-center mb-5">Contacto</h2>

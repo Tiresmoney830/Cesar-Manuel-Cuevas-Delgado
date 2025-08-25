@@ -4,9 +4,7 @@
 
 :root {
     /* Variables comunes para ambos temas */
-    --primary-color: #ff0000;
-    --transition-speed: 0.3s;
-
+    --transition-speed: 0.4s;
     --border-radius-small: 8px;
     --border-radius-medium: 12px;
     --border-radius-large: 16px;
@@ -15,115 +13,141 @@
 }
 
 /* =================================================================== */
+/* ================= ANIMACIONES DE FONDO (OLAS DE COLOR) ============ */
+/* =================================================================== */
+
+@keyframes color-wave-light {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes color-wave-dark {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =================================================================== */
 /* =================== ESTILOS DIRECTOS POR TEMA ===================== */
 /* =================================================================== */
 
-/* ------------------- TEMA OSCURO (CON GRADIENTE) ------------------- */
+/* ------------------- TEMA OSCURO (NEÓN FUEGO/HIELO) ------------------- */
 body[data-theme='dark'] {
-    background-image: linear-gradient(180deg, #1f1f29 0%, #121212 100%);
-    background-color: #121212; 
-    background-attachment: fixed; 
-    color: #ffffff;
+    --primary-color: #ff8c00; /* Naranja vibrante como acento principal */
+    --text-color: #ffffff;
+    --card-bg-color: rgba(20, 20, 30, 0.75);
+    --card-border-color: rgba(255, 140, 0, 0.4); /* Borde naranja semitransparente */
+    --navbar-bg-color: rgba(10, 10, 15, 0.7);
+    --footer-bg-color: rgba(10, 10, 15, 0.8);
+    
+    background: linear-gradient(-45deg, #ff3c00, #ff0000, #0022ff, #1a0033);
+    background-size: 400% 400%;
+    animation: color-wave-dark 15s ease infinite;
 }
-body[data-theme='dark'] .navbar {
-    background-color: rgba(28, 28, 38, 0.85); 
+
+/* === REGLA AÑADIDA PARA MEJORAR LEGIBILIDAD DEL NAVBAR === */
+body[data-theme='dark'] .navbar .navbar-brand,
+body[data-theme='dark'] .navbar .nav-link,
+body[data-theme='dark'] .navbar .theme-btn {
+    color: #ffffff; /* Asegura que el color sea blanco brillante */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8); /* Sombra para mejorar el contraste */
 }
-body[data-theme='dark'] .navbar-brand,
-body[data-theme='dark'] .nav-link,
-body[data-theme='dark'] .theme-btn {
-    color: #ffffff;
-}
-body[data-theme='dark'] .nav-link:hover,
-body[data-theme='dark'] .nav-link.active {
-    color: var(--primary-color);
-    background-color: rgba(255, 255, 255, 0.1); 
-    border-radius: var(--border-radius-full);
-    padding-left: 12px; 
-    padding-right: 12px;
-}
+/* ========================================================= */
+
 body[data-theme='dark'] .card {
-    background-image: linear-gradient(160deg, #2a2a35 0%, #1e1e1e 100%);
-    background-color: #1e1e1e; 
-    border: 1px solid var(--primary-color);
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.3); /* Sombra naranja */
 }
-body[data-theme='dark'] .card .card-title,
-body[data-theme='dark'] .card .card-text,
-body[data-theme='dark'] .card .card-subtitle,
-body[data-theme='dark'] .card .text-muted {
-    color: #ffffff !important;
-}
-body[data-theme='dark'] .form-control {
-    background-color: #2a2a2a; 
-    border-color: #444;
-    color: #ffffff;
-}
-body[data-theme='dark'] .form-control:focus {
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
-}
-body[data-theme='dark'] footer {
-    background-color: #1a1a20; 
-    border-top: 1px solid var(--primary-color);
+body[data-theme='dark'] .section-title {
+    text-shadow: 0 0 8px var(--primary-color); /* Brillo neón con el nuevo color */
 }
 body[data-theme='dark'] .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
+body[data-theme='dark'] .form-control {
+    background-color: #2a2a2a; 
+    border-color: #444;
+}
+body[data-theme='dark'] .form-control:focus {
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.7); /* Sombra de foco naranja */
+}
 
-/* ------------------- TEMA CLARO (CON GRADIENTE RADIAL) ------------------- */
+
+/* ------------------- TEMA CLARO (PASTEL) ------------------- */
 body[data-theme='light'] {
-    /* (NUEVO) Gradiente radial para el tema claro */
-    background: #EEAECA; /* Fallback color */
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-    background-attachment: fixed; /* Importante para gradientes de página completa */
-    color: #000000; /* Texto negro para contraste */
-}
-body[data-theme='light'] .navbar {
-    /* (MODIFICADO) Fondo del navbar más translúcido para ver el gradiente */
-    background-color: rgba(255, 255, 255, 0.6); /* Blanco translúcido */
-    backdrop-filter: blur(8px); /* Efecto de desenfoque para mejorar legibilidad */
-}
-body[data-theme='light'] .navbar-brand,
-body[data-theme='light'] .nav-link,
-body[data-theme='light'] .theme-btn {
-    color: #000000; /* Mantener texto negro para contraste con el navbar claro */
-}
-body[data-theme='light'] .nav-link:hover,
-body[data-theme='light'] .nav-link.active { 
-    color: var(--primary-color);
-    background-color: rgba(0, 0, 0, 0.08); /* Fondo sutil para hover */
-    border-radius: var(--border-radius-full);
-    padding-left: 12px; 
-    padding-right: 12px;
+    --primary-color: #5e95e5; /* Azul pastel */
+    --text-color: #212529;
+    --card-bg-color: rgba(255, 255, 255, 0.7);
+    --card-border-color: #e0e0e0;
+    --navbar-bg-color: rgba(255, 255, 255, 0.6);
+    --footer-bg-color: rgba(245, 245, 245, 0.7);
+
+    background: linear-gradient(120deg, #a8e6cf, #dcedc1, #ffd3b6, #ffaaa5);
+    background-size: 300% 300%;
+    animation: color-wave-light 20s ease infinite;
 }
 body[data-theme='light'] .card {
-    /* (MODIFICADO) Fondo de las tarjetas translúcido */
-    background-color: rgba(255, 255, 255, 0.75); /* Blanco translúcido */
-    border: 1px solid var(--primary-color);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra más suave */
-}
-body[data-theme='light'] .card .text-muted {
-    color: #333 !important; /* Un gris más oscuro para mejor contraste */
-}
-body[data-theme='light'] .form-control {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-color: #bbb;
-    color: #000000;
-}
-body[data-theme='light'] .form-control:focus {
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
-}
-body[data-theme='light'] footer {
-    /* (MODIFICADO) Fondo del footer translúcido */
-    background-color: rgba(240, 240, 240, 0.7);
-    border-top: 1px solid var(--primary-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 body[data-theme='light'] .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
+body[data-theme='light'] .form-control {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: #ccc;
+}
+body[data-theme='light'] .form-control:focus {
+    box-shadow: 0 0 10px rgba(94, 149, 229, 0.3);
+}
 
 /* ================================================== */
-/* ========= ESTILOS GENERALES Y ANIMACIONES ======== */
+/* ========= ESTILOS GENERALES Y TRANSICIONES ======== */
 /* ================================================== */
+body {
+    color: var(--text-color);
+    background-attachment: fixed;
+}
+.navbar, .card, footer {
+    backdrop-filter: blur(10px);
+}
+.navbar {
+    background-color: var(--navbar-bg-color);
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+/* Nota: la regla general de color de texto se mantiene para el tema claro */
+.navbar-brand, .nav-link, .theme-btn {
+    color: var(--text-color);
+}
+
+.nav-link:hover, .nav-link.active { 
+    color: var(--primary-color);
+    background-color: rgba(0, 0, 0, 0.08);
+    border-radius: var(--border-radius-full);
+    padding-left: 12px; 
+    padding-right: 12px;
+}
+body[data-theme='dark'] .nav-link:hover, body[data-theme='dark'] .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+.card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.card .card-title, .card .card-text, .card .card-subtitle, .card .text-muted {
+    color: var(--text-color) !important;
+}
+footer {
+    background-color: var(--footer-bg-color);
+    border-top: 1px solid var(--primary-color);
+    transition: background-color var(--transition-speed) ease, border-top-color var(--transition-speed) ease;
+}
+.form-control, .form-control:focus {
+    color: var(--text-color);
+    transition: background-color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
 
 /* ================================================== */
 /* =============== NAVBAR AL HACER SCROLL =========== */
@@ -132,24 +156,24 @@ body[data-theme='light'] .navbar-toggler-icon {
     border-bottom: 1px solid var(--primary-color);
 }
 body[data-theme='dark'] .navbar.scrolled {
-    background-color: rgba(20, 20, 28, 0.95); 
-    box-shadow: 0 2px 10px rgba(255, 0, 0, 0.1);
+    background-color: rgba(5, 5, 10, 0.9); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 body[data-theme='light'] .navbar.scrolled {
-    background-color: rgba(255, 255, 255, 0.8); /* Más opaco al hacer scroll */
+    background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-/* ================================================== */
 
-body, .navbar, .nav-link, .card, .form-control, footer {
-    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-image var(--transition-speed) ease, background var(--transition-speed) ease;
-}
+/* ================================================== */
+/* ============= COMPONENTES Y ANIMACIONES ========== */
+/* ================================================== */
 
 .section-title {
     color: var(--primary-color);
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
+    transition: color var(--transition-speed), text-shadow var(--transition-speed);
 }
 .profile-img {
     width: 150px;
@@ -158,6 +182,7 @@ body, .navbar, .nav-link, .card, .form-control, footer {
     border: 3px solid var(--primary-color);
     animation: heartbeat 1.5s ease-in-out infinite;
     object-fit: cover;
+    transition: border-color var(--transition-speed);
 }
 @keyframes heartbeat {
     0%, 100% { transform: scale(1); }
@@ -176,13 +201,8 @@ body, .navbar, .nav-link, .card, .form-control, footer {
 .row > div:nth-child(1) .animated-card { animation-delay: 0.1s; }
 .row > div:nth-child(2) .animated-card { animation-delay: 0.2s; }
 .row > div:nth-child(3) .animated-card { animation-delay: 0.3s; }
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 .tech-icons {
     display: flex;
     justify-content: center;
@@ -202,11 +222,10 @@ body, .navbar, .nav-link, .card, .form-control, footer {
     color: #fff;
     font-weight: bold;
     padding: 10px 25px;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s, transform 0.3s, border-color 0.3s;
 }
 .btn-primary-custom:hover {
-    background-color: #d60000;
-    border-color: #d60000;
+    filter: brightness(1.1);
     color: #fff;
     transform: translateY(-2px);
 }
@@ -221,4 +240,92 @@ body, .navbar, .nav-link, .card, .form-control, footer {
 }
 .navbar-toggler {
     border-color: var(--primary-color);
+    transition: border-color var(--transition-speed);
+}
+
+/* ================================================== */
+/* ===== NUEVO ESTILO MEJORADO PARA EL CARRUSEL ==== */
+/* ================================================== */
+
+.carousel-inner {
+    padding: 1em;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(128, 128, 128, 0.1); /* Fondo muy sutil */
+    backdrop-filter: blur(5px); /* Efecto de cristal esmerilado */
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8; /* Ligeramente transparentes en estado de reposo */
+    transition: background-color 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
+}
+
+/* Posicionar las flechas ligeramente fuera del contenido en pantallas grandes */
+.carousel-control-prev {
+    left: -25px;
+}
+.carousel-control-next {
+    right: -25px;
+}
+
+/* Efecto al pasar el mouse */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: var(--primary-color); /* Se ilumina con el color del tema */
+    border-color: var(--primary-color);
+    opacity: 1; /* Totalmente opaco */
+}
+
+/* Forzar que el icono de la flecha sea blanco en el hover para que contraste */
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* Estilos específicos por tema */
+body[data-theme='dark'] .carousel-control-prev,
+body[data-theme='dark'] .carousel-control-next {
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde blanco sutil */
+}
+
+body[data-theme='light'] .carousel-control-prev,
+body[data-theme='light'] .carousel-control-next {
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Borde negro sutil */
+}
+
+/* Asegurar que el icono sea negro en el tema claro */
+body[data-theme='light'] .carousel-control-prev-icon,
+body[data-theme='light'] .carousel-control-next-icon {
+    filter: invert(1) grayscale(100);
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .carousel-inner {
+        padding: 0; /* Sin padding en móviles */
+    }
+    /* Mover las flechas hacia adentro */
+    .carousel-control-prev {
+        left: 5px;
+    }
+    .carousel-control-next {
+        right: 5px;
+    }
+
+    /* Ocultar tarjetas adicionales para que se vea una a la vez */
+    .carousel-inner .d-none.d-md-block,
+    .carousel-inner .d-none.d-lg-block {
+        display: none !important;
+    }
+}
+
+/* Ajustes para tabletas */
+@media (min-width: 768px) and (max-width: 992px) {
+  .carousel-inner .d-none.d-lg-block {
+    display: none !important;
+  }
 }
